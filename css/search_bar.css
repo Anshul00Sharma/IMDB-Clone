@@ -1,0 +1,132 @@
+/* body {
+    margin: 0;
+    padding: 0;
+    background: #140f1d;
+} */
+:root {
+    --md-dark-color: #1d1d1d;
+    --dark-color: #171717;
+    --light-dark-color: #292929;
+    --yellow-color: #d4aa11;
+}
+
+.box {
+    position: absolute;
+    top: 50%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    
+}
+
+.input {
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: 4px solid rgb(245, 197, 24);
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: rgb(245, 197, 24);
+    outline: none;
+    transition: .5s;
+    
+}
+
+.box:hover input {
+    width: 320px;
+    background: rgb(34, 34, 42);
+    border-radius: 10px;
+}
+.input:focus {
+    width: 320px;
+    background: rgb(34, 34, 42);
+    border-radius: 10px;
+}
+
+.box  i {
+    position: absolute;
+    top: 50%;
+    right: -1px;
+    transform: translate(-50%, -50%);
+    font-size: 26px;
+    color: #ffd52d;
+    transition: .2s;
+}
+
+.box:hover i {
+    opacity: 0;
+    z-index: -1;
+}
+
+.search-list {
+    position: absolute;
+    right: 33rem;
+    top: 4.5rem;
+    max-height: 500px;
+    /* overflow-y: scroll; */
+    z-index: 20;
+}
+
+.search-list .search-list-item {
+    border-radius: 5px;
+    background-color: var(--light-dark-color);
+    padding: 0.5rem;
+    /* border-bottom: 1px solid var(--dark-color); */
+    width: 320px;
+    color: #fff;
+    cursor: pointer;
+    -webkit-transition: background-color 200ms ease;
+    -o-transition: background-color 200ms ease;
+    transition: background-color 200ms ease;
+}
+.search-list .search-list-item:Hover {
+    background-color: #1f1f1f;
+}
+
+
+.search-list-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.search-item-thumbnail img {
+    width: 40px;
+    margin-right: 1rem;
+}
+
+.search-item-info h3 {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.search-item-info p {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    opacity: 0.6;
+}
+.hide-search-list {
+    display: none;
+}
+@media all and (max-width: 1700px) and (min-width:1000px) {
+    .search-list {
+        right: 26rem
+
+    }
+
+}
+@media all and (max-width: 400px){
+    .search-list {
+        right: 1rem
+
+    }
+
+}
+
+
