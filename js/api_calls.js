@@ -1,8 +1,14 @@
+//  api key
 const apiKey = "d21b963e";
+// css query selectores
 const topMoviesCard = document.querySelector("#topMovies .slider");
 const topSeriesCard = document.querySelector("#topSeries .slider");
 const favoriteCard = document.querySelector("#favorite .slider");
+const batman = document.querySelector("#batman");
+const topGun = document.querySelector("#topGun");
+const dr = document.querySelector("#drStrange");
 
+// movies for cards to diplay
 let topMovies = [
   "Top Gun Maverick",
   "Doctor Strange",
@@ -15,6 +21,7 @@ let topMovies = [
   "Spider-Man No Way Home",
   "The Bad Guys",
 ];
+// Tv Shows for cards to diplay
 let topSeries = [
   "Stranger Things",
   "The Boys",
@@ -27,10 +34,8 @@ let topSeries = [
   "Bosch: Legacy",
   "Breaking Bad",
 ];
-// console.log(topMovies);
 
 // load movies from API
-
 for (let movie of topMovies) {
   loadMoviesApi(movie, displayTopMovies, "t");
 }
@@ -38,21 +43,17 @@ for (let movie of topSeries) {
   loadMoviesApi(movie, displayTopSeries, "t");
 }
 
+// async Api calls
 async function loadMoviesApi(searchTerm, displayFunction, type) {
-  searchTerm = searchTerm.replaceAll(" ", "+");
-  //   console.log(searchTerm);
-
   const URL = `https://www.omdbapi.com/?${type}=${searchTerm}&y=&plot=short&r=json&apikey=${apiKey}`;
   const res = await fetch(`${URL}`);
   const data = await res.json();
-  //   console.log(data);
-
   if (data.Response == "True") displayFunction(data);
 }
-
+// html contents for top movies
 function displayTopMovies(data) {
-  topMoviesCard.innerHTML += `<div class=" card">
-                        <div class="face face1" id="${data.imdbID}" onclick="viewContent(${data.imdbID})">
+  topMoviesCard.innerHTML += `<div class=" card" id="${data.imdbID}">
+                        <div class="face face1"  onclick="viewContent(${data.imdbID})">
                             <div class="content">
                                 <div class="icon">
                                 <img src=${data.Poster} alt="">
@@ -71,17 +72,18 @@ function displayTopMovies(data) {
                                 </h4>
                                 <h3 class="card-title">${data.Title}
                                 </h3>
-                                <div><span class="card-trailer"><i class="fa-solid fa-play"></i> Trailer</span>
-                                    <span class="card-info"> <i class="fa-solid fa-circle-info"></i></span>
+                                <div><span class="card-trailer" onclick="playTrailer(${data.imdbID})"><i class="fa-solid fa-play"></i> Trailer</span>
+                                    
                                 </div>
 
                             </div>
                         </div>
             </div>`;
 }
+//  html contents of top serires
 function displayTopSeries(data) {
-  topSeriesCard.innerHTML += `<div class=" card">
-                        <div class="face face1" id="${data.imdbID}" onclick="viewContent(${data.imdbID})">
+  topSeriesCard.innerHTML += `<div class=" card" id="${data.imdbID}">
+                        <div class="face face1"  onclick="viewContent(${data.imdbID})">
                             <div class="content">
                                 <div class="icon">
                                 <img src=${data.Poster} alt="">
@@ -100,17 +102,18 @@ function displayTopSeries(data) {
                                 </h4>
                                 <h3 class="card-title">${data.Title}
                                 </h3>
-                                <div><span class="card-trailer"><i class="fa-solid fa-play"></i> Trailer</span>
-                                    <span class="card-info"> <i class="fa-solid fa-circle-info"></i></span>
+                                <div><span class="card-trailer" onclick="playTrailer(${data.imdbID})"><i class="fa-solid fa-play"></i> Trailer</span>
+                                    
                                 </div>
 
                             </div>
                         </div>
             </div>`;
 }
+// html contents of favorites
 function displayFavorites(data) {
-  favoriteCard.innerHTML += `<div class=" card">
-                        <div class="face face1" id="${data.imdbID}" onclick="viewContent(${data.imdbID})">
+  favoriteCard.innerHTML += `<div class=" card" >
+                        <div class="face face1"  onclick="viewContent(${data.imdbID})">
                             <div class="content">
                                 <div class="icon">
                                 <img src=${data.Poster} alt="">
@@ -122,52 +125,56 @@ function displayFavorites(data) {
                             <div class="content">
                                 <h4 class="rating-like-button"><strong>⭐${data.imdbRating}</strong>
 
-                                    <label class="like">
-                                        <input onclick="likeButton(${data.imdbID})"class="fav" type="checkbox" />
+                                    <label class="like" >
+                                        <input class="fav" type="checkbox" onclick="removeFavorite(${data.imdbID})"checked/>
                                         <div class="hearth" />
                                     </label>
                                 </h4>
                                 <h3 class="card-title">${data.Title}
                                 </h3>
-                                <div><span class="card-trailer"><i class="fa-solid fa-play"></i> Trailer</span>
-                                    <span class="card-info"> <i class="fa-solid fa-circle-info"></i></span>
+                                <div><span class="card-trailer" onclick="playTrailer(${data.imdbID})"><i class="fa-solid fa-play"></i> Trailer</span>
+                                    
                                 </div>
 
                             </div>
                         </div>
             </div>`;
 }
+// requets for another page with details
 function viewContent(id) {
   console.log("this is id" + id);
   sessionStorage.setItem("detailed_content_id", id.id);
   window.location.href = "http://127.0.0.1:5500/content_details.html";
-  //   console.log(sessionStorage.getItem("detailed_content_id"));
 }
+// Event listner for slid show
+batman.addEventListener("click", () => {
+  window.location.href = "http://127.0.0.1:5500/home.html#topMovies";
+});
 
-// Favorite
-
+// Favorite heart button
 function likeButton(id) {
-  if (id != undefined) {
-    let isLikeChecked = document
-      .querySelector(`#${id.id}`)
-      .parentElement.querySelector(".fav").checked;
-    let localFavorites = localStorage.getItem("favorites");
-    if (localFavorites == null) {
-      favoriteList = [];
-    } else {
-      favoriteList = JSON.parse(localFavorites);
-      favoriteList = [...new Set(favoriteList)];
-    }
-
+  // saving in local storage
+  let localFavorites = localStorage.getItem("favorites");
+  if (localFavorites == null) {
+    favoriteList = [];
+  } else {
+    favoriteList = JSON.parse(localFavorites);
+    favoriteList = [...new Set(favoriteList)];
+  }
+  console.log(id);
+  // putting in favorites list
+  if (id.id != undefined) {
+    let isLikeChecked = document.querySelector(`#${id.id} .fav`).checked;
     if (isLikeChecked) {
       favoriteList.push(id.id);
       console.log("added " + id.id);
       localStorage.setItem("favorites", JSON.stringify(favoriteList));
       loadFavorite();
     } else {
+      // removing from favorite list
       if (favoriteList.length != 0) {
         let idIndex = favoriteList.indexOf(id.id);
-        console.log(idIndex);
+        // console.log(idIndex);
         if (idIndex != undefined) {
           favoriteList.splice(idIndex, 1);
           localStorage.setItem("favorites", JSON.stringify(favoriteList));
@@ -178,6 +185,7 @@ function likeButton(id) {
     }
   }
 }
+// reload the favorite section
 function loadFavorite() {
   favoriteCard.innerHTML = "";
   let localFavorites = localStorage.getItem("favorites");
@@ -185,8 +193,24 @@ function loadFavorite() {
     favoriteList = JSON.parse(localFavorites);
     for (let card of favoriteList) {
       loadMoviesApi(card, displayFavorites, "i");
+      document.querySelector(`#${card} .fav`).checked = true;
     }
   }
 }
+// remove favorite item
+function removeFavorite(id) {
+  let idIndex = favoriteList.indexOf(id.id);
+  if (idIndex != undefined) {
+    favoriteList.splice(idIndex, 1);
+    localStorage.setItem("favorites", JSON.stringify(favoriteList));
+    console.log("removed " + id.id);
+    loadFavorite();
+  }
+}
+//  trailer link to imdb website
+function playTrailer(id) {
+  window.open(`https://www.imdb.com/title/${id.id}/`, "_blank").focus();
+}
 
-loadFavorite();
+// loadfavorite delayed for api loading
+setTimeout(loadFavorite, 1000);

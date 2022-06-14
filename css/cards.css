@@ -3,7 +3,7 @@
 *::before {
     box-sizing: border-box;
 }
-
+/* css variables */
 :root {
     --background-color: #282828;
     --handle-size: 2.5rem;
@@ -12,10 +12,9 @@
     --frames: 62;
 }
 
-
+/* outer container */
 .containers {
     width: 100%;
-    /* margin-top: 3rem; */
     overflow: scroll;
     overflow-y: hidden;
     position: relative;
@@ -23,14 +22,10 @@
     justify-content: space-between;
     align-items: center;
 }
-/* .containers::-webkit-scrollbar {
-    display: none;
-} */
+/* scroll beautification */
 .containers::-webkit-scrollbar {
     width: 1rem;
 }
-
-/* Track */
 .containers::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     -webkit-border-radius: 10px;
@@ -38,13 +33,13 @@
     
 }
 .containers::-webkit-scrollbar-thumb {
-    /* opacity: 10; */
     background-color: rgb(245, 197, 24);
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     
 }
 
+/* card holder */
 .slider {
     width: 94%;
     --items-per-screen: 4;
@@ -56,72 +51,24 @@
     transition: transform 250ms ease-in-out;
 }
 
-
-
-
-/* .handle {
-    display: flex;
-    border: none;
-    border-radius: 1rem;
-    flex-grow: 0;
-    flex-shrink: 0;
-    height: 10rem;
-    background-color: rgba(255, 255, 255, .25);
-    z-index: 10;
-    margin: var(--img-gap) 0;
-    width: var(--handle-size);
-    cursor: pointer;
-    font-size: 5rem;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    line-height: 0;
-    transition: background-color 150ms ease-in-out;
-}
-
-.left-handle {
-    width: 3%;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.right-handle {
-    width: 3%;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-} */
-
-/* .handle:hover,
-.handle:focus {
-    background-color: rgba(255, 255, 255, .5);
-}
-
-.text {
-    transition: transform 150ms ease-in-out;
-}
-
-.handle:hover .text,
-.handle:focus .text {
-    transform: scale(1.2);
-} */
-
+/* card */
+/* card header */
 .header {
     width: 100%;
     display: flex;
     justify-content: space-between;
     padding: .5rem calc(var(--img-gap) * 2 + var(--handle-size));
-    /* align-items: center; */
+    
 }
-
+/* title */
 .title {
     height: 5rem;
     font-size: 3rem;
-    margin: 0;
+    margin-top: 1rem;
     margin-bottom: -20rem;
     z-index: 10;
 }
-
-.progress-bar {
+/* .progress-bar {
     background: #22222A;
     display: flex;
     flex-direction: row;
@@ -129,7 +76,6 @@
 }
 
 .progress-item {
-    /* flex: 0 0 1.5rem; */
     width: 10px;
     height: 10px;
     background-color: rgba(255, 255, 255, .5);
@@ -137,40 +83,17 @@
 
 .progress-item.active {
     background-color: rgba(255, 255, 255, .9);
-}
-
-@media (max-width: 1300px) {
-    .slider {
-        --items-per-screen: 3;
-        width: 90%;
-    }
-
-    
-}
-
-@media (max-width: 800px) {
-    .slider {
-        --items-per-screen: 2;
-    }
-}
-
-@media (max-width: 550px) {
-    .slider {
-        --items-per-screen: 1;
-    }
-}
+} */
 
 
 
+
+/* card styling */
 .containers .card {
     position: relative;
-    /* background-color: #f1f1f1; */
-    /* background-color: #333; */
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background: #22222A; */
-    /* background: rgb(24, 24, 24); */
     background: var(--background-color);
     border: none;
     height: 750px;
@@ -182,7 +105,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* background-image: url("https://images.thedirect.com/media/article_full/marvel-netflix-movies.jpg?imgeng=cmpr_75/"); */
     background-size: contain;
     transition: 0.7s;
     z-index: 1;
@@ -195,20 +117,6 @@
 
 }
 
-.containers .card:nth-child(1) .icon {
-    /* background: #e07768; */
-
-}
-
-.containers .card:nth-child(2) .icon {
-    /* background: #6eadd4; */
-}
-
-.containers .card:nth-child(3) .icon {
-    /* background: #4aada9; */
-}
-
-
 .containers .card .icon .fa {
     position: absolute;
     top: 50%;
@@ -218,8 +126,6 @@
     transition: 0.7s;
     color: #fff;
 }
-
-
 
 .containers .card .face {
     width: 240px;
@@ -237,8 +143,6 @@
     transform: translateY(100px);
     cursor: pointer;
     
-    /* background-image: url("https: //images.thedirect.com/media/article_full/marvel-netflix-movies.jpg?imgeng=cmpr_75/"); */
-
 }
 
 .slider>.card {
@@ -250,7 +154,7 @@
 
 
 
-
+/* div that containes rating and like button */
 .rating-like-button {
     position: relative;
     display: flex;
@@ -258,15 +162,15 @@
     justify-content: space-between;
     color: black;
 }
-
+/* trailer button */
 .card-trailer {
     position: relative;
     top: 30px;
+    left:70px;
     cursor: pointer;
     padding: 0.5rem;
     transition: all 0.2s ease-in-out;
 }
-
 .card-trailer:hover {
 
     background-color: rgb(44, 44, 44);
@@ -274,24 +178,8 @@
 
 }
 
-.card-info {
-    position: relative;
-    padding: 0.5rem;
-    top: 30px;
-    left: 110px;
-    transition: all 0.2s ease-in-out;
-    border-radius: 25px;
-
-}
-
-.card-info:hover {
-    padding: 0.5rem;
-    background-color: rgb(44, 44, 44);
-
-
-
-}
-
+/* card faces */
+/* card face 1 */
 .containers .card:hover .face.face1 {
     background: #ff0057;
     transform: translateY(90px);
@@ -311,7 +199,7 @@
 .containers .card .face.face1 .content i {
     max-width: 100px;
 }
-
+/* card face 2 with information and like button */
 .containers .card .face.face2 {
     position: relative;
     background: #fff;
@@ -351,12 +239,8 @@
     text-decoration: none;
     color: #414141;
 }
-.card-title {
-    /* margin-top: -10px; */
 
-}
-/* like button  */
-
+/* heart like button  */
 .like>input {
     display: none;
 }
@@ -388,6 +272,26 @@ input:checked+.hearth {
     animation: like 1s steps(calc(var(--frames) - 3));
     animation-fill-mode: forwards;
 }
+/* media Query*/
+@media (max-width: 1300px) {
+    .slider {
+        --items-per-screen: 3;
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .slider {
+        --items-per-screen: 2;
+    }
+}
+
+@media (max-width: 550px) {
+    .slider {
+        --items-per-screen: 1;
+    }
+}
 
 @keyframes like {
     0% {
@@ -417,6 +321,6 @@ input:checked+.hearth {
     }
 }
 footer {
-    height: 1000px;
+    height: 500px;
     width: 100%;
 }

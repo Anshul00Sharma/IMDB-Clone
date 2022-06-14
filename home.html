@@ -5,60 +5,64 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <!-- Font Awesome cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <!-- BootStrap Cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./images/1592328.png" type="image/x-icon">
+    <!-- CSS Links -->
     <link rel="stylesheet" href="./css/slide.css">
     <link rel="stylesheet" href="./css/cards.css">
     <link rel="stylesheet" href="./css/search_bar.css">
     <link rel="stylesheet" href="./css/home.css">
-
+    <!-- Title -->
     <title>IMDB | Home</title>
 </head>
 
-
 <body>
+    <!-- bootstram container for shorter width -->
     <div class="container">
         <header>
+            <!-- Nav Bar -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand " href="#"><span class="badge"
                         style="background-color: rgb(245,197,24);color: rgb(34,34,42);font-size: large;margin-left: 1rem;"><strong>IMDB</strong></span>
                 </a>
+                <!-- nav bar dropdown button for smaller screen -->
                 <button class="navbar-toggler m-2" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <!-- search box -->
                 <div class="box">
                     <form name="search">
                         <input onkeyup="findMovies()" onclick="findMovies()" id="movie-search-box" type="text"
                             class="input" name="txt" onfocusout="document.search.txt.value = ''">
                     </form>
                     <i class=" fas fa-search"></i>
-
                 </div>
+                <!-- serach list -->
                 <div class="search-list" id="search-list">
-
-
                 </div>
-
+                <!-- nav bar droup down -->
                 <div class="collapse navbar-collapse p-3" id="navbarNav">
                     <ul class="navbar-nav">
+                        <!-- inner link to home -->
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
+                        <!-- inner link to favorite -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Favorites</a>
+                            <a class="nav-link" href="#favorite">Favorites</a>
                         </li>
+                        <!-- inner link to topMovies -->
                         <li class="nav-item">
                             <a class="nav-link" href="#topMovies">Top Movies</a>
                         </li>
+                        <!-- inner link to topSeries -->
                         <li class="nav-item">
                             <a class="nav-link" href="#topSeries">Top Series</a>
                         </li>
@@ -67,11 +71,13 @@
             </nav>
         </header>
         <main>
+            <!-- Slide show -->
             <div class="content-width">
                 <div class="slideshow">
                     <!-- Slideshow Items -->
                     <div class="slideshow-items">
-                        <div class="item">
+                        <!-- Top gun movie item -->
+                        <div class="item" id="topGun">
                             <div class="item-image-container">
                                 <img class="item-image" src="./images/top_gun.jpg" />
                             </div>
@@ -100,12 +106,10 @@
                                         the envelope as a courageous test pilot and dodging the advancement in rank that
                                         would ground him.</b>
                                 </span>
-
-
-
                             </div>
                         </div>
-                        <div class="item">
+                        <!-- doctor Strange movie item -->
+                        <div class="item" id="drStrange">
                             <div class="item-image-container">
                                 <img class="item-image" src="./images/dr_strange.jpg" />
                             </div>
@@ -129,8 +133,6 @@
                                         <br>
                                     </b>
                                 </span>
-
-
                                 <span class="vertical-part">
                                     <b>Doctor Strange teams up with a mysterious teenage girl from his dreams who can
                                         travel across multiverses, to battle
@@ -138,11 +140,10 @@
                                         to wipe out millions across the
                                         multiverse. They seek help from Wanda the Scarlet Witch, Wong and others.</b>
                                 </span>
-
-
                             </div>
                         </div>
-                        <div class="item">
+                        <!-- batman movie item -->
+                        <div class="item" id="batman">
                             <div class="item-image-container">
                                 <img class="item-image" src="./images/batman.jpg" />
                             </div>
@@ -160,21 +161,17 @@
                                 <span class="vertical-part">
                                     <b>
                                         <strong class="slide-rating">⭐7.9</strong>
-
-
                                     </b>
                                 </span>
-
-
                                 <span class="vertical-part">
                                     <b>When a sadistic serial killer begins murdering key political figures in Gotham,
                                         Batman is forced to investigate the
                                         city's hidden corruption and question his family's involvement.</b>
                                 </span>
-
                             </div>
                         </div>
                     </div>
+                    <!-- bootom control cubes -->
                     <div class="controls">
                         <ul>
                             <li class="control" data-index="0"></li>
@@ -185,10 +182,8 @@
                 </div>
             </div>
 
-
-
-
-            <div class="row" id="topMovies">
+            <!-- Top Movie Cards -->
+            <div class="row top" id="topMovies">
                 <div class="header">
                     <span class="title">Top Movies</span>
                     <div class="progress-bar"></div>
@@ -199,7 +194,8 @@
                 </div>
 
             </div>
-            <div class="row" id="topSeries">
+            <!-- Top Serires Cards -->
+            <div class="row top" id="topSeries">
                 <div class="header">
                     <span class="title">Top Series</span>
                     <div class="progress-bar"></div>
@@ -210,6 +206,7 @@
                 </div>
 
             </div>
+            <!-- Favorites Cards -->
             <div class="row" id="favorite">
                 <div class="header">
                     <span class="title">Favorites</span>
@@ -219,12 +216,13 @@
                     <div class="slider">
                     </div>
                 </div>
-
             </div>
         </main>
-        <footer>
-        </footer>
+
     </div>
+    <footer>
+        <span>© All Rights Reserved By Author(Anshul Sharma)</span>
+    </footer>
 
 
     <!-- Optional JavaScript -->
@@ -238,12 +236,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
+    <!-- local javascript links -->
     <script src="./js/slide.js"></script>
     <script src="./js/api_calls.js"></script>
     <script src="./js/search_bar.js"></script>
 
 </body>
+<!-- bootstrape js cdn -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>

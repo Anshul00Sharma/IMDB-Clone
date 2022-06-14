@@ -7,7 +7,7 @@ const items = document.querySelectorAll(".item"),
   interval = 7000;
 
 let current = 0;
-
+// slide show
 const slider = {
   init: () => {
     controls.forEach((control) =>
@@ -82,5 +82,3 @@ const slider = {
 
 let intervalF = setInterval(slider.nextSlide, interval);
 slider.init();
-
-// sessionStorage.clear();

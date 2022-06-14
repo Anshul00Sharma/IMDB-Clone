@@ -1,18 +1,19 @@
+// seesion storage for linking to pages
 const content_id = sessionStorage.getItem("detailed_content_id");
+// css selector
 const resultGrid = document.getElementById("result-grid");
+// api key
 const apiKey = "d21b963e";
 
+// api calls
 async function loadMovies(content_id) {
-  //   content_id = searchTerm.replaceAll(" ", "+");
-  //   console.log(searchTerm);
-
   const URL = `https://www.omdbapi.com/?i=${content_id}&y=&plot=short&r=json&apikey=${apiKey}`;
   const res = await fetch(`${URL}`);
   const data = await res.json();
-  //   console.log(data);
-
   if (data.Response == "True") displayMovieDetails(data);
 }
+
+// html of details fetched from api
 function displayMovieDetails(details) {
   resultGrid.innerHTML = `
     <div class = "movie-poster">
@@ -38,4 +39,5 @@ function displayMovieDetails(details) {
     </div>
     `;
 }
+// run load movies
 loadMovies(content_id);

@@ -1,18 +1,14 @@
-// console.log("this is search_bar");
-// console.log(sessionStorage.getItem("detailed_content_id"));
-
+// css selectors
 const movieSearchBox = document.getElementById("movie-search-box");
 const searchList = document.getElementById("search-list");
-// const resultGrid = document.getElementById("result-grid");
 const search_elem = document.querySelector("body");
 
+// event listner for search
 search_elem.addEventListener("click", () => {
-  // console.log(search_elem);
-
   searchList.classList.add("hide-search-list");
 });
 
-// load movies from API
+// fetch movies from API
 async function loadMovies(searchTerm) {
   const URL = `https://omdbapi.com/?s=${searchTerm}&page=1&apikey=fc1fef96`;
   const res = await fetch(`${URL}`);
@@ -20,7 +16,7 @@ async function loadMovies(searchTerm) {
   console.log(data.Search);
   if (data.Response == "True") displayMovieList(data.Search);
 }
-
+// auto complete the search
 function findMovies() {
   let searchTerm = movieSearchBox.value.trim();
   // console.log(searchTerm);
@@ -31,7 +27,7 @@ function findMovies() {
     searchList.classList.add("hide-search-list");
   }
 }
-
+// display search item
 function displayMovieList(movies) {
   searchList.innerHTML = "";
   for (let data of movies) {
@@ -54,9 +50,9 @@ function displayMovieList(movies) {
     searchList.appendChild(movieListItem);
   }
 }
+// send to other page for detaled description
 function viewContentSearch(id) {
   console.log("this is id" + id);
   sessionStorage.setItem("detailed_content_id", id);
   window.location.href = "http://127.0.0.1:5500/content_details.html";
-  //   console.log(sessionStorage.getItem("detailed_content_id"));
 }
