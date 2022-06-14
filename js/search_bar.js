@@ -54,5 +54,5 @@ function displayMovieList(movies) {
 function viewContentSearch(id) {
   console.log("this is id" + id);
   sessionStorage.setItem("detailed_content_id", id);
-  window.location.href = "http://127.0.0.1:5500/content_details.html";
+  window.location.href = "./content_details.html";
 }
