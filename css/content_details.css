@@ -7,8 +7,10 @@
 }
 
 .movie-poster img {
+    display: flex;
+    justify-content: center;
     max-width: 300px;
-    margin-left: 4rem;
+    margin: auto;
     border: 4px solid #fff;
 }
 

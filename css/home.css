@@ -24,5 +24,15 @@ footer {
     justify-content: center;
     align-items: center;
     background-color: #282828;
-    font-size: 2rem;
+    font-size: 2em;
+}
+@media all and (max-width: 400px) {
+    
+
+    footer {
+        font-size: 1em;
+        height: 50px;
+    }
+
+
 }

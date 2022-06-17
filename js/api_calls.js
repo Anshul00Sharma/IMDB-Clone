@@ -148,7 +148,7 @@ function viewContent(id) {
 }
 // Event listner for slid show
 batman.addEventListener("click", () => {
-  window.location.href = "http://127.0.0.1:5500/home.html#topMovies";
+  window.location.href = "./index.html#topMovies";
 });
 
 // Favorite heart button
@@ -161,13 +161,13 @@ function likeButton(id) {
     favoriteList = JSON.parse(localFavorites);
     favoriteList = [...new Set(favoriteList)];
   }
-  console.log(id);
+  // console.log(id);
   // putting in favorites list
   if (id.id != undefined) {
     let isLikeChecked = document.querySelector(`#${id.id} .fav`).checked;
     if (isLikeChecked) {
       favoriteList.push(id.id);
-      console.log("added " + id.id);
+      // console.log("added " + id.id);
       localStorage.setItem("favorites", JSON.stringify(favoriteList));
       loadFavorite();
     } else {
@@ -178,7 +178,7 @@ function likeButton(id) {
         if (idIndex != undefined) {
           favoriteList.splice(idIndex, 1);
           localStorage.setItem("favorites", JSON.stringify(favoriteList));
-          console.log("removed " + id.id);
+          // console.log("removed " + id.id);
           loadFavorite();
         }
       }
@@ -193,7 +193,9 @@ function loadFavorite() {
     favoriteList = JSON.parse(localFavorites);
     for (let card of favoriteList) {
       loadMoviesApi(card, displayFavorites, "i");
-      document.querySelector(`#${card} .fav`).checked = true;
+      if (document.querySelector(`#${card} .fav`) != null) {
+        document.querySelector(`#${card} .fav`).checked = true;
+      }
     }
   }
 }
@@ -203,7 +205,7 @@ function removeFavorite(id) {
   if (idIndex != undefined) {
     favoriteList.splice(idIndex, 1);
     localStorage.setItem("favorites", JSON.stringify(favoriteList));
-    console.log("removed " + id.id);
+    // console.log("removed " + id.id);
     loadFavorite();
   }
 }
