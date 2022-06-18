@@ -126,7 +126,7 @@ function displayFavorites(data) {
                                 <h4 class="rating-like-button"><strong>⭐${data.imdbRating}</strong>
 
                                     <label class="like" >
-                                        <input class="fav" type="checkbox" onclick="removeFavorite(${data.imdbID})"checked/>
+                                        <input class="fav" type="checkbox" onclick="removeFavorite('${data.imdbID}')"checked/>
                                         <div class="hearth" />
                                     </label>
                                 </h4>
@@ -154,6 +154,11 @@ batman.addEventListener("click", () => {
 // Favorite heart button
 function likeButton(id) {
   // saving in local storage
+  if (id.id != undefined) {
+    id = id.id;
+  }
+  console.log("is running", id);
+
   let localFavorites = localStorage.getItem("favorites");
   if (localFavorites == null) {
     favoriteList = [];
@@ -163,17 +168,17 @@ function likeButton(id) {
   }
   // console.log(id);
   // putting in favorites list
-  if (id.id != undefined) {
-    let isLikeChecked = document.querySelector(`#${id.id} .fav`).checked;
+  if (id != undefined) {
+    let isLikeChecked = document.querySelector(`#${id} .fav`).checked;
     if (isLikeChecked) {
-      favoriteList.push(id.id);
+      favoriteList.push(id);
       // console.log("added " + id.id);
       localStorage.setItem("favorites", JSON.stringify(favoriteList));
       loadFavorite();
     } else {
       // removing from favorite list
       if (favoriteList.length != 0) {
-        let idIndex = favoriteList.indexOf(id.id);
+        let idIndex = favoriteList.indexOf(id);
         // console.log(idIndex);
         if (idIndex != undefined) {
           favoriteList.splice(idIndex, 1);
@@ -191,6 +196,7 @@ function loadFavorite() {
   let localFavorites = localStorage.getItem("favorites");
   if (localFavorites != null) {
     favoriteList = JSON.parse(localFavorites);
+    favoriteList = [...new Set(favoriteList)];
     for (let card of favoriteList) {
       loadMoviesApi(card, displayFavorites, "i");
       if (document.querySelector(`#${card} .fav`) != null) {
@@ -201,7 +207,11 @@ function loadFavorite() {
 }
 // remove favorite item
 function removeFavorite(id) {
-  let idIndex = favoriteList.indexOf(id.id);
+  if (id.id != undefined) {
+    id = id.id;
+  }
+
+  let idIndex = favoriteList.indexOf(id);
   if (idIndex != undefined) {
     favoriteList.splice(idIndex, 1);
     localStorage.setItem("favorites", JSON.stringify(favoriteList));
