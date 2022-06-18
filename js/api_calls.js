@@ -113,7 +113,7 @@ function displayTopSeries(data) {
 // html contents of favorites
 function displayFavorites(data) {
   favoriteCard.innerHTML += `<div class=" card" >
-                        <div class="face face1"  onclick="viewContent(${data.imdbID})">
+                        <div class="face face1"  onclick="viewContent('${data.imdbID}')">
                             <div class="content">
                                 <div class="icon">
                                 <img src=${data.Poster} alt="">
@@ -142,8 +142,12 @@ function displayFavorites(data) {
 }
 // requets for another page with details
 function viewContent(id) {
+  if (id.id != undefined) {
+    id = id.id;
+  }
+
   console.log("this is id" + id);
-  sessionStorage.setItem("detailed_content_id", id.id);
+  sessionStorage.setItem("detailed_content_id", id);
   window.open("./content_details.html", "_self");
 }
 // Event listner for slid show

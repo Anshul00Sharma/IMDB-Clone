@@ -7,6 +7,7 @@ const apiKey = "d21b963e";
 
 // api calls
 async function loadMovies(content_id) {
+  console.log("this is id" + content_id);
   const URL = `https://www.omdbapi.com/?i=${content_id}&y=&plot=short&r=json&apikey=${apiKey}`;
   const res = await fetch(`${URL}`);
   const data = await res.json();
